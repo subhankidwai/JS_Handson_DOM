@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Assessment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>DOM</h1>
+    <h2>Q.1 - Write the code to access element which is having id as "text"</h2>
+    <div id="text">Hello, Prepbytes</div>
+    <pre>
+        let c = document.getElementById("text")
+        console.log(c.innerText)
+    </pre>
+
+    <h2>Q.2 - Write the code to access element which is having tag as "h1"</h2>
+    <h3>Heading 1</h3>
+    <pre>
+            let x = document.getElementsByTagName("h3")
+            console.log(x[0].innerText)
+    </pre>
+
+    <h2>Q.3 - Write the code to access element which is having class as "box"</h2>
+    <p class="box">Hello Team</p>
+    <pre>
+        let b=document.getElementsByClassName("box")
+        console.log(b[0].innerText)
+    </pre>
+
+    <h2>Q.4 Change the heading from ""Hello"" to ""Hello World"" using DOM functions"</h2>
+    <h4 id="heading">Hello</h4>
+    <pre>
+        let abc=document.getElementById("heading")
+        abc.addEventListener("click", function(){
+        abc.innerText="Hello World"
+        })
+    </pre>
+
+    <h2>Q.5 - Create three cards on HTML page and arrange them using flex property in row or horizontal direction and also create button at the bottom named "Change Flex direction". When user clicks on this button, the cards arrangement should be changed to vertical direction.</h2>
+    <h3>3 Cards</h3>
+    <div id="parent">
+        <div id="child"></div>
+        <div id="child"></div>
+        <div id="child"></div>
+    </div>
+    <button id="c-btn">Change Flex direction</button>
+    <pre>  
+        let boxElement=document.getElementById("parent")
+        let flexBtn=document.getElementById("c-btn")
+        
+        flexBtn.addEventListener("click", function(){
+            boxElement.style.flexDirection="column"
+        })</pre>
+
+    <h2>Q.6 - What's the difference between window vs document?</h2>
+    <p>Document Object: The document object represent a web page that is loaded in the browser. By accessing the document object, we can access the element in the HTML page. With the help of document objects, we can add dynamic content to our web page. The document object can be accessed with a window.document or just document.
+        <h4>Syntax:</h4>
+        <pre>
+            document.property_name;
+        </pre>
+    </p>
+    <p>Window Object: The window object is the topmost object of the DOM hierarchy. It represents a browser window or frame that displays the contents of the webpage. Whenever a window appears on the screen to display the contents of the document, the window object is created. 
+        <h4>Syntax:</h4>
+    <pre>
+        window.property_name;
+    </pre>
+    </p>
+
+    <h2>Q.7 - Add one style attribute and give text color as red and id attribute and give the id value as ""heading"" in the above given h1 tag using DOM functions"</h2>
+    <h1 id="heading1">Hello PrepBytes</h1>
+    <pre>
+        let a=document.getElementById("heading1")
+        a.addEventListener("click",function(){
+            a.style.color="red"
+        })
+    </pre>
+
+    <h2>Q.8 - Create an HTML page having content as Hello world and a button named Replace Text. When user will click on this button page content should be changed to "Welcome to Elevation academy"</h2>
+    <p id="p1">Hello World</p>
+    <button id="btn2">Replace Text</button>
+    <pre>
+        let ab=document.getElementById("p1")
+        let bcd=document.getElementById("btn2")
+
+        bcd.addEventListener("click", function(){
+            ab.innerText="Welcome to Elevation Academy"
+        })
+    </pre>
+
+    <h2>Q.9 - Write code to implement timer clock using JS -- display HH:MM:SS -- the time should keep updating every second</h2>
+    <h3>Timer</h3>
+    <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+
+    <pre>
+        function showTime(){
+            var date = new Date();
+            var h = date.getHours(); // 0 - 23
+            var m = date.getMinutes(); // 0 - 59
+            var s = date.getSeconds(); // 0 - 59
+            var session = "AM";
+            
+            if(h == 0){
+                h = 12;
+            }
+            
+            if(h > 12){
+                h = h - 12;
+                session = "PM";
+            }
+            
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+            
+            var time = h + ":" + m + ":" + s + " " + session;
+            document.getElementById("MyClockDisplay").innerText = time;
+            document.getElementById("MyClockDisplay").textContent = time;
+            
+            setTimeout(showTime, 1000);
+            
+        }
+        
+        showTime();
+    </pre>
+
+    <h2>Q. 10 - Create a select drop down for selecting Year 20-21, 21-22 etc. Print the item text selected</h2>
+    <label for="">Select Year</label>
+    <select name="year" id="year">
+        <option value="20-21">20-21</option>
+        <option value="21-22">21-22</option>
+        <option value="22-23">22-23</option>
+        <option value="23-24">23-24</option>
+    </select>
+    <span id="output"></span>
+
+    <pre>
+        let y=document.getElementById("year")
+        let z=document.getElementById("output")
+
+        y.addEventListener("change", function(event){
+            z.innerText=event.target.selectedOptions[0].text;
+        })
+    </pre>
+    
+
+
+
+
+
+
+
+
+
+    <script src="./script.js"></script>
+</body>
+</html>
